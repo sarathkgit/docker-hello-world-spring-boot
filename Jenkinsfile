@@ -55,14 +55,14 @@ node {
 	sh "docker run -d -p 8020:8080 -t ${dockerImageName}"
      
     }
-    //stage('Deploy Docker Image'){
+    stage('Deploy Docker Image'){
       
       // deploy docker image to nexus
 
-      //echo "Docker Image Tag Name: ${dockerImageTag}"
+      echo "Docker Image Tag Name: ${dockerImageTag}"
 
-      //sh "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD "
-      //sh "docker tag ${dockerImageName} $DOCKER_USER/${dockerImageTag}"
-      //sh "docker push $DOCKER_USER/${dockerImageTag}"
-    //}
+      sh "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD "
+      sh "docker tag ${dockerImageName} $DOCKER_USER/${dockerImageTag}"
+      sh "docker push $DOCKER_USER/${dockerImageTag}"
+    }
 }
